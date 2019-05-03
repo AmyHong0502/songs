@@ -2,10 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class SongList extends Component {
-  // this.props === { songs: state.songs }
+  renderList() {
+    return this.props.songs.map(song => {
+      return (
+        <div key={song.title}>
+          <p>{song.title}</p>
+          <p>{song.duration}</p>
+          <button>Select</button>
+        </div>
+      );
+    });
+  }
+
   render() {
-    console.log(this.props);
-    return <div>SongList</div>;
+    return <>{this.renderList()}</>;
   }
 }
 
